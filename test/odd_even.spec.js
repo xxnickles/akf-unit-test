@@ -55,7 +55,7 @@ describe('Calculate whether a number is odd and even', () => {
         })
         
         function dispatchEvent(element, event){           
-            element.dispatchEvent(new Event('change', { 'bubbles': true }))
+            element.dispatchEvent(new Event(event, { 'bubbles': true }))
         }
 
         // the sintax bellow is es6 and it doesn't work on IE

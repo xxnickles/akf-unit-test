@@ -25,8 +25,10 @@ describe('Calculate whether a number is odd and even', () => {
             document.body.removeChild(document.getElementById('fixture'));
         })
 
-        it('should mark your button as disble when input is empty', () => {
-            document.getElementById('input-control').value = ''
+        it('should mark your button as disabled when input is empty', () => {
+            let element = document.getElementById('input-control')
+            element.value = ''
+            dispatchEvent(element, 'change')
             let buttonDisabled = document.getElementById('go-button').disabled
             expect(buttonDisabled).to.be.true
         })
@@ -37,14 +39,24 @@ describe('Calculate whether a number is odd and even', () => {
         })
 
         it('should mark your button as enabled when input is valid', () => {
-            document.getElementById('input-control').value = '123'
+            let element = document.getElementById('input-control')
+            element.value = '123'            
+            dispatchEvent(element, 'change')
             let buttonDisabled = document.getElementById('go-button').disabled
             expect(buttonDisabled).to.be.false
         })
 
         it('should mark your button as disbled when input is not a number', () => {
-            assert(false === true)
+            let element = document.getElementById('input-control')
+            element.value = 'xyz'            
+            dispatchEvent(element, 'change')
+            let buttonDisabled = document.getElementById('go-button').disabled
+            expect(buttonDisabled).to.be.true
         })
+        
+        function dispatchEvent(element, event){           
+            element.dispatchEvent(new Event('change', { 'bubbles': true }))
+        }
 
         // the sintax bellow is es6 and it doesn't work on IE
         function getFixture() {

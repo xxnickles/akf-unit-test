@@ -1,10 +1,18 @@
 window.evenOddCalculator = window.evenOddCalculator || {};
 window.evenOddCalculator.initialize = function () {
     document.getElementById('go-button').disabled = true
-    let input =  document.getElementById('input-control')
-    input.addEventListener('input', function(e) {
-        console.log(e)
+    document.getElementById('input-control').addEventListener('change', function (e) {      
+        if (isAValidNumber(e.target.value)) {        
+            document.getElementById('go-button').disabled = false
+        } else {
+            document.getElementById('go-button').disabled = true          
+        }
     })
+}
+
+
+function isAValidNumber(value) {   
+    return !isNaN(parseInt(value))
 }
 
 function checkOdd(number) {

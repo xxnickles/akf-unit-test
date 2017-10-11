@@ -1,24 +1,36 @@
 window.evenOddCalculator = window.evenOddCalculator || {};
 window.evenOddCalculator.initialize = function () {
-    document.getElementById('go-button').disabled = true
-    document.getElementById('input-control').addEventListener('change', function (e) {      
-        if (isAValidNumber(e.target.value)) {        
-            document.getElementById('go-button').disabled = false
+    let button = document.getElementById('go-button')
+    let label = document.getElementById('check-result')
+    let inputText = document.getElementById('input-control')
+    button.disabled = true
+
+    inputText.addEventListener('change', function (e) {
+        if (isAValidNumber(e.target.value)) {
+            button.disabled = false
         } else {
-            document.getElementById('go-button').disabled = true          
+            button.disabled = true
         }
+    })
+
+    button.addEventListener('click', function () {       
+        label.innerText = checkOddAndEven(inputText.value)
     })
 }
 
-
-function isAValidNumber(value) {   
+function isAValidNumber(value) {
     return !isNaN(parseInt(value))
 }
 
-function checkOdd(number) {
-    return number % 2 !== 0
-}
-
-function checkEven(number) {
-    return number % 2 === 0
+function checkOddAndEven(number) {
+    if (isAValidNumber(number)) {
+        let evaluation = (number % 2 !== 0)
+        if (evaluation) {
+            return 'odd'
+        } else {
+            return 'even'
+        }
+    } else {
+        return 'invalid'
+    }
 }

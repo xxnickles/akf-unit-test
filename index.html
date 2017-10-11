@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    <div>
-        <input id="test" type="text">
-        <button><span>Go</span></button>
+    <div id='input-container'>
+        <input type="text" id='input-control'>
+        <button id="go-button">
+            <span>Go</span>
+        </button>
+        <p id="check-result"></p>
     </div>
+    <script src="./index.js"></script>
+    <script>
+        evenOddCalculator.initialize()
+    </script>
 </body>
+
 </html>
